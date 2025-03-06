@@ -1,4 +1,9 @@
 {
+  "name": "@ory/client",
+  "version": "v1.17.2",
+  "files": [
+    "clients/client/typescript"
+  ],
   "private": true,
   "scripts": {
     "format": "prettier --write 'contrib/**/*{.ts,.js}'"
