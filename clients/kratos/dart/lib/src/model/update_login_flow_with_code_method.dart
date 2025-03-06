@@ -19,6 +19,7 @@ part 'update_login_flow_with_code_method.g.dart';
 /// * [method] - Method should be set to \"code\" when logging in using the code strategy.
 /// * [resend] - Resend is set when the user wants to resend the code
 /// * [transientPayload] - Transient data to pass along to any webhooks
+/// * [trustDevice] - Trust this device
 @BuiltValue()
 abstract class UpdateLoginFlowWithCodeMethod implements Built<UpdateLoginFlowWithCodeMethod, UpdateLoginFlowWithCodeMethodBuilder> {
   /// Address is the address to send the code to, in case that there are multiple addresses. This field is only used in two-factor flows and is ineffective for passwordless flows.
@@ -48,6 +49,10 @@ abstract class UpdateLoginFlowWithCodeMethod implements Built<UpdateLoginFlowWit
   /// Transient data to pass along to any webhooks
   @BuiltValueField(wireName: r'transient_payload')
   JsonObject? get transientPayload;
+
+  /// Trust this device
+  @BuiltValueField(wireName: r'trust_device')
+  bool? get trustDevice;
 
   UpdateLoginFlowWithCodeMethod._();
 
@@ -115,6 +120,13 @@ class _$UpdateLoginFlowWithCodeMethodSerializer implements PrimitiveSerializer<U
       yield serializers.serialize(
         object.transientPayload,
         specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.trustDevice != null) {
+      yield r'trust_device';
+      yield serializers.serialize(
+        object.trustDevice,
+        specifiedType: const FullType(bool),
       );
     }
   }
@@ -188,6 +200,13 @@ class _$UpdateLoginFlowWithCodeMethodSerializer implements PrimitiveSerializer<U
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.transientPayload = valueDes;
+          break;
+        case r'trust_device':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.trustDevice = valueDes;
           break;
         default:
           unhandled.add(key);

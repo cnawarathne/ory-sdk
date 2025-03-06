@@ -95,6 +95,7 @@ import 'package:ory_kratos_client/src/model/ui_container.dart';
 import 'package:ory_kratos_client/src/model/ui_node.dart';
 import 'package:ory_kratos_client/src/model/ui_node_anchor_attributes.dart';
 import 'package:ory_kratos_client/src/model/ui_node_attributes.dart';
+import 'package:ory_kratos_client/src/model/ui_node_division_attributes.dart';
 import 'package:ory_kratos_client/src/model/ui_node_image_attributes.dart';
 import 'package:ory_kratos_client/src/model/ui_node_input_attributes.dart';
 import 'package:ory_kratos_client/src/model/ui_node_meta.dart';
@@ -222,6 +223,7 @@ part 'serializers.g.dart';
   UiNode,
   UiNodeAnchorAttributes,
   UiNodeAttributes,
+  UiNodeDivisionAttributes,
   UiNodeImageAttributes,
   UiNodeInputAttributes,
   UiNodeMeta,
@@ -281,6 +283,10 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(Session)]),
         () => ListBuilder<Session>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(SessionDevice)]),
+        () => ListBuilder<SessionDevice>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(String)]),

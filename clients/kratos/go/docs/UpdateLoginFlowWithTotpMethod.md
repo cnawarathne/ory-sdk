@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Method** | **string** | Method should be set to \&quot;totp\&quot; when logging in using the TOTP strategy. | 
 **TotpCode** | **string** | The TOTP code. | 
 **TransientPayload** | Pointer to **map[string]interface{}** | Transient data to pass along to any webhooks | [optional] 
+**TrustDevice** | Pointer to **bool** | Trust this device | [optional] 
 
 ## Methods
 
@@ -117,6 +118,31 @@ SetTransientPayload sets TransientPayload field to given value.
 `func (o *UpdateLoginFlowWithTotpMethod) HasTransientPayload() bool`
 
 HasTransientPayload returns a boolean if a field has been set.
+
+### GetTrustDevice
+
+`func (o *UpdateLoginFlowWithTotpMethod) GetTrustDevice() bool`
+
+GetTrustDevice returns the TrustDevice field if non-nil, zero value otherwise.
+
+### GetTrustDeviceOk
+
+`func (o *UpdateLoginFlowWithTotpMethod) GetTrustDeviceOk() (*bool, bool)`
+
+GetTrustDeviceOk returns a tuple with the TrustDevice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrustDevice
+
+`func (o *UpdateLoginFlowWithTotpMethod) SetTrustDevice(v bool)`
+
+SetTrustDevice sets TrustDevice field to given value.
+
+### HasTrustDevice
+
+`func (o *UpdateLoginFlowWithTotpMethod) HasTrustDevice() bool`
+
+HasTrustDevice returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

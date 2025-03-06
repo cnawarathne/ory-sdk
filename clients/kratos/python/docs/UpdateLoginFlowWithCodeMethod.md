@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **method** | **str** | Method should be set to \&quot;code\&quot; when logging in using the code strategy. | 
 **resend** | **str** | Resend is set when the user wants to resend the code | [optional] 
 **transient_payload** | **object** | Transient data to pass along to any webhooks | [optional] 
+**trust_device** | **bool** | Trust this device | [optional] 
 
 ## Example
 

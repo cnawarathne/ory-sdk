@@ -8,11 +8,15 @@ part of 'session_device.dart';
 
 class _$SessionDevice extends SessionDevice {
   @override
+  final BuiltList<SessionAuthenticationMethod>? authenticationMethods;
+  @override
   final String id;
   @override
   final String? ipAddress;
   @override
   final String? location;
+  @override
+  final bool? trusted;
   @override
   final String? userAgent;
 
@@ -20,7 +24,12 @@ class _$SessionDevice extends SessionDevice {
       (new SessionDeviceBuilder()..update(updates))._build();
 
   _$SessionDevice._(
-      {required this.id, this.ipAddress, this.location, this.userAgent})
+      {this.authenticationMethods,
+      required this.id,
+      this.ipAddress,
+      this.location,
+      this.trusted,
+      this.userAgent})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'SessionDevice', 'id');
   }
@@ -36,18 +45,22 @@ class _$SessionDevice extends SessionDevice {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is SessionDevice &&
+        authenticationMethods == other.authenticationMethods &&
         id == other.id &&
         ipAddress == other.ipAddress &&
         location == other.location &&
+        trusted == other.trusted &&
         userAgent == other.userAgent;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, authenticationMethods.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, ipAddress.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
+    _$hash = $jc(_$hash, trusted.hashCode);
     _$hash = $jc(_$hash, userAgent.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -56,9 +69,11 @@ class _$SessionDevice extends SessionDevice {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'SessionDevice')
+          ..add('authenticationMethods', authenticationMethods)
           ..add('id', id)
           ..add('ipAddress', ipAddress)
           ..add('location', location)
+          ..add('trusted', trusted)
           ..add('userAgent', userAgent))
         .toString();
   }
@@ -67,6 +82,14 @@ class _$SessionDevice extends SessionDevice {
 class SessionDeviceBuilder
     implements Builder<SessionDevice, SessionDeviceBuilder> {
   _$SessionDevice? _$v;
+
+  ListBuilder<SessionAuthenticationMethod>? _authenticationMethods;
+  ListBuilder<SessionAuthenticationMethod> get authenticationMethods =>
+      _$this._authenticationMethods ??=
+          new ListBuilder<SessionAuthenticationMethod>();
+  set authenticationMethods(
+          ListBuilder<SessionAuthenticationMethod>? authenticationMethods) =>
+      _$this._authenticationMethods = authenticationMethods;
 
   String? _id;
   String? get id => _$this._id;
@@ -80,6 +103,10 @@ class SessionDeviceBuilder
   String? get location => _$this._location;
   set location(String? location) => _$this._location = location;
 
+  bool? _trusted;
+  bool? get trusted => _$this._trusted;
+  set trusted(bool? trusted) => _$this._trusted = trusted;
+
   String? _userAgent;
   String? get userAgent => _$this._userAgent;
   set userAgent(String? userAgent) => _$this._userAgent = userAgent;
@@ -91,9 +118,11 @@ class SessionDeviceBuilder
   SessionDeviceBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _authenticationMethods = $v.authenticationMethods?.toBuilder();
       _id = $v.id;
       _ipAddress = $v.ipAddress;
       _location = $v.location;
+      _trusted = $v.trusted;
       _userAgent = $v.userAgent;
       _$v = null;
     }
@@ -115,13 +144,28 @@ class SessionDeviceBuilder
   SessionDevice build() => _build();
 
   _$SessionDevice _build() {
-    final _$result = _$v ??
-        new _$SessionDevice._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'SessionDevice', 'id'),
-            ipAddress: ipAddress,
-            location: location,
-            userAgent: userAgent);
+    _$SessionDevice _$result;
+    try {
+      _$result = _$v ??
+          new _$SessionDevice._(
+              authenticationMethods: _authenticationMethods?.build(),
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'SessionDevice', 'id'),
+              ipAddress: ipAddress,
+              location: location,
+              trusted: trusted,
+              userAgent: userAgent);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'authenticationMethods';
+        _authenticationMethods?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'SessionDevice', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

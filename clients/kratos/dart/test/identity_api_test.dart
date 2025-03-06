@@ -124,6 +124,15 @@ void main() {
       // TODO
     });
 
+    // List an Identity's trusted devices
+    //
+    // This endpoint returns all trusted devices for any sessions that belong to the given Identity.
+    //
+    //Future<BuiltList<SessionDevice>> listIdentityDevices(String id) async
+    test('test listIdentityDevices', () async {
+      // TODO
+    });
+
     // Get all Identity Schemas
     //
     // Returns a list of all identity schemas currently in use.
@@ -157,6 +166,15 @@ void main() {
     //
     //Future<Identity> patchIdentity(String id, { BuiltList<JsonPatch> jsonPatch }) async
     test('test patchIdentity', () async {
+      // TODO
+    });
+
+    // Patch an Identity's devices
+    //
+    // Partially updates an identity's device's trusted field using [JSON Patch](https://jsonpatch.com/). Only the field `trusted` can be updated using this method. Even that can only be set to `false` using this method.
+    //
+    //Future<BuiltList<SessionDevice>> patchIdentityDevices(String id, String deviceId) async
+    test('test patchIdentityDevices', () async {
       // TODO
     });
 

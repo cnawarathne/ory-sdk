@@ -3,7 +3,7 @@ Ory Identities API
 
 This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
 
-API version: v1.3.8
+API version: v1.4.0-alpha.0
 Contact: office@ory.sh
 */
 
@@ -362,6 +362,44 @@ func (obj *UpdateLoginFlowBody) GetActualInstance() (interface{}) {
 
 	if obj.UpdateLoginFlowWithWebAuthnMethod != nil {
 		return obj.UpdateLoginFlowWithWebAuthnMethod
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj UpdateLoginFlowBody) GetActualInstanceValue() (interface{}) {
+	if obj.UpdateLoginFlowWithCodeMethod != nil {
+		return *obj.UpdateLoginFlowWithCodeMethod
+	}
+
+	if obj.UpdateLoginFlowWithIdentifierFirstMethod != nil {
+		return *obj.UpdateLoginFlowWithIdentifierFirstMethod
+	}
+
+	if obj.UpdateLoginFlowWithLookupSecretMethod != nil {
+		return *obj.UpdateLoginFlowWithLookupSecretMethod
+	}
+
+	if obj.UpdateLoginFlowWithOidcMethod != nil {
+		return *obj.UpdateLoginFlowWithOidcMethod
+	}
+
+	if obj.UpdateLoginFlowWithPasskeyMethod != nil {
+		return *obj.UpdateLoginFlowWithPasskeyMethod
+	}
+
+	if obj.UpdateLoginFlowWithPasswordMethod != nil {
+		return *obj.UpdateLoginFlowWithPasswordMethod
+	}
+
+	if obj.UpdateLoginFlowWithTotpMethod != nil {
+		return *obj.UpdateLoginFlowWithTotpMethod
+	}
+
+	if obj.UpdateLoginFlowWithWebAuthnMethod != nil {
+		return *obj.UpdateLoginFlowWithWebAuthnMethod
 	}
 
 	// all schemas are nil

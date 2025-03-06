@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aal** | [**AuthenticatorAssuranceLevel**](AuthenticatorAssuranceLevel.md) |  | [optional] 
 **completed_at** | **datetime** | When the authentication challenge was completed. | [optional] 
+**device_trust_based** | **bool** | DeviceTrustBased indicates that this authentication method was added due to device trust | [optional] 
 **method** | **str** |  | [optional] 
 **organization** | **str** | The Organization id used for authentication | [optional] 
 **provider** | **str** | OIDC or SAML provider id used for authentication | [optional] 

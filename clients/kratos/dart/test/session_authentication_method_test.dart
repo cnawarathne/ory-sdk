@@ -18,6 +18,12 @@ void main() {
       // TODO
     });
 
+    // DeviceTrustBased indicates that this authentication method was added due to device trust
+    // bool deviceTrustBased
+    test('to test the property `deviceTrustBased`', () async {
+      // TODO
+    });
+
     // String method
     test('to test the property `method`', () async {
       // TODO

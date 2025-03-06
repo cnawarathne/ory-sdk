@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
   title: Ory Identities API
-  version: v1.3.8
+  version: v1.4.0-alpha.0
 servers:
 - url: /
 tags:
@@ -761,6 +761,117 @@ paths:
       security:
       - oryAccessToken: []
       summary: Delete a credential for a specific identity
+      tags:
+      - identity
+      x-accepts:
+      - application/json
+  /admin/identities/{id}/devices:
+    get:
+      description: This endpoint returns all trusted devices for any sessions that
+        belong to the given Identity.
+      operationId: listIdentityDevices
+      parameters:
+      - description: ID is the identity's ID.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sessionDevice'
+                type: array
+          description: List Identity Devices Response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorGeneric'
+          description: errorGeneric
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorGeneric'
+          description: errorGeneric
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorGeneric'
+          description: errorGeneric
+      security:
+      - oryAccessToken: []
+      summary: List an Identity's trusted devices
+      tags:
+      - identity
+      x-accepts:
+      - application/json
+  /admin/identities/{id}/devices/{device_id}:
+    patch:
+      description: |-
+        Partially updates an identity's device's trusted field using [JSON Patch](https://jsonpatch.com/).
+        Only the field `trusted` can be updated using this method. Even that can only be set to `false` using this method.
+      operationId: patchIdentityDevices
+      parameters:
+      - description: ID is the session's ID.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: DeviceID is the Identity's Device's ID.
+        explode: false
+        in: path
+        name: device_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sessionDevice'
+                type: array
+          description: List Identity Devices Response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorGeneric'
+          description: errorGeneric
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorGeneric'
+          description: errorGeneric
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorGeneric'
+          description: errorGeneric
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorGeneric'
+          description: errorGeneric
+      security:
+      - oryAccessToken: []
+      summary: Patch an Identity's devices
       tags:
       - identity
       x-accepts:
@@ -4043,6 +4154,14 @@ components:
               $ref: '#/components/schemas/identity'
             type: array
       description: Paginated Identity List Response
+    listIdentityDevices:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/sessionDevice'
+            type: array
+      description: List Identity Devices Response
     listIdentitySessions:
       content:
         application/json:
@@ -6903,26 +7022,56 @@ components:
         tokenized: tokenized
         expires_at: 2000-01-23T04:56:07.000+00:00
         devices:
-        - location: location
+        - trusted: true
+          authentication_methods:
+          - device_trust_based: true
+            completed_at: 2000-01-23T04:56:07.000+00:00
+            method: link_recovery
+            provider: provider
+            organization: organization
+            aal: aal0
+          - device_trust_based: true
+            completed_at: 2000-01-23T04:56:07.000+00:00
+            method: link_recovery
+            provider: provider
+            organization: organization
+            aal: aal0
+          location: location
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           ip_address: ip_address
           user_agent: user_agent
-        - location: location
+        - trusted: true
+          authentication_methods:
+          - device_trust_based: true
+            completed_at: 2000-01-23T04:56:07.000+00:00
+            method: link_recovery
+            provider: provider
+            organization: organization
+            aal: aal0
+          - device_trust_based: true
+            completed_at: 2000-01-23T04:56:07.000+00:00
+            method: link_recovery
+            provider: provider
+            organization: organization
+            aal: aal0
+          location: location
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           ip_address: ip_address
           user_agent: user_agent
         authentication_methods:
-        - completed_at: 2000-01-23T04:56:07.000+00:00
+        - device_trust_based: true
+          completed_at: 2000-01-23T04:56:07.000+00:00
           method: link_recovery
           provider: provider
           organization: organization
           aal: aal0
-        - completed_at: 2000-01-23T04:56:07.000+00:00
+        - device_trust_based: true
+          completed_at: 2000-01-23T04:56:07.000+00:00
           method: link_recovery
           provider: provider
           organization: organization
           aal: aal0
-        authenticator_assurance_level: null
+        authenticator_assurance_level: aal0
         identity:
           traits: ""
           credentials:
@@ -7036,6 +7185,7 @@ components:
     sessionAuthenticationMethod:
       description: A singular authenticator used during authentication / login.
       example:
+        device_trust_based: true
         completed_at: 2000-01-23T04:56:07.000+00:00
         method: link_recovery
         provider: provider
@@ -7048,6 +7198,10 @@ components:
           description: When the authentication challenge was completed.
           format: date-time
           type: string
+        device_trust_based:
+          description: DeviceTrustBased indicates that this authentication method
+            was added due to device trust
+          type: boolean
         method:
           enum:
           - link_recovery
@@ -7078,11 +7232,32 @@ components:
     sessionDevice:
       description: Device corresponding to a Session
       example:
+        trusted: true
+        authentication_methods:
+        - device_trust_based: true
+          completed_at: 2000-01-23T04:56:07.000+00:00
+          method: link_recovery
+          provider: provider
+          organization: organization
+          aal: aal0
+        - device_trust_based: true
+          completed_at: 2000-01-23T04:56:07.000+00:00
+          method: link_recovery
+          provider: provider
+          organization: organization
+          aal: aal0
         location: location
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         ip_address: ip_address
         user_agent: user_agent
       properties:
+        authentication_methods:
+          description: A list of authenticators which were used to authenticate the
+            session.
+          items:
+            $ref: '#/components/schemas/sessionAuthenticationMethod'
+          title: List of (Used) AuthenticationMethods
+          type: array
         id:
           description: Device record ID
           format: uuid
@@ -7093,6 +7268,10 @@ components:
         location:
           description: Geo Location corresponding to the IP Address
           type: string
+        trusted:
+          description: Is this device trusted? (only matters if this device submitted
+            aal2+ credentials)
+          type: boolean
         user_agent:
           description: UserAgent of the client
           type: string
@@ -7366,26 +7545,56 @@ components:
           tokenized: tokenized
           expires_at: 2000-01-23T04:56:07.000+00:00
           devices:
-          - location: location
+          - trusted: true
+            authentication_methods:
+            - device_trust_based: true
+              completed_at: 2000-01-23T04:56:07.000+00:00
+              method: link_recovery
+              provider: provider
+              organization: organization
+              aal: aal0
+            - device_trust_based: true
+              completed_at: 2000-01-23T04:56:07.000+00:00
+              method: link_recovery
+              provider: provider
+              organization: organization
+              aal: aal0
+            location: location
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             ip_address: ip_address
             user_agent: user_agent
-          - location: location
+          - trusted: true
+            authentication_methods:
+            - device_trust_based: true
+              completed_at: 2000-01-23T04:56:07.000+00:00
+              method: link_recovery
+              provider: provider
+              organization: organization
+              aal: aal0
+            - device_trust_based: true
+              completed_at: 2000-01-23T04:56:07.000+00:00
+              method: link_recovery
+              provider: provider
+              organization: organization
+              aal: aal0
+            location: location
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             ip_address: ip_address
             user_agent: user_agent
           authentication_methods:
-          - completed_at: 2000-01-23T04:56:07.000+00:00
+          - device_trust_based: true
+            completed_at: 2000-01-23T04:56:07.000+00:00
             method: link_recovery
             provider: provider
             organization: organization
             aal: aal0
-          - completed_at: 2000-01-23T04:56:07.000+00:00
+          - device_trust_based: true
+            completed_at: 2000-01-23T04:56:07.000+00:00
             method: link_recovery
             provider: provider
             organization: organization
             aal: aal0
-          authenticator_assurance_level: null
+          authenticator_assurance_level: aal0
           identity:
             traits: ""
             credentials:
@@ -7535,26 +7744,56 @@ components:
           tokenized: tokenized
           expires_at: 2000-01-23T04:56:07.000+00:00
           devices:
-          - location: location
+          - trusted: true
+            authentication_methods:
+            - device_trust_based: true
+              completed_at: 2000-01-23T04:56:07.000+00:00
+              method: link_recovery
+              provider: provider
+              organization: organization
+              aal: aal0
+            - device_trust_based: true
+              completed_at: 2000-01-23T04:56:07.000+00:00
+              method: link_recovery
+              provider: provider
+              organization: organization
+              aal: aal0
+            location: location
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             ip_address: ip_address
             user_agent: user_agent
-          - location: location
+          - trusted: true
+            authentication_methods:
+            - device_trust_based: true
+              completed_at: 2000-01-23T04:56:07.000+00:00
+              method: link_recovery
+              provider: provider
+              organization: organization
+              aal: aal0
+            - device_trust_based: true
+              completed_at: 2000-01-23T04:56:07.000+00:00
+              method: link_recovery
+              provider: provider
+              organization: organization
+              aal: aal0
+            location: location
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             ip_address: ip_address
             user_agent: user_agent
           authentication_methods:
-          - completed_at: 2000-01-23T04:56:07.000+00:00
+          - device_trust_based: true
+            completed_at: 2000-01-23T04:56:07.000+00:00
             method: link_recovery
             provider: provider
             organization: organization
             aal: aal0
-          - completed_at: 2000-01-23T04:56:07.000+00:00
+          - device_trust_based: true
+            completed_at: 2000-01-23T04:56:07.000+00:00
             method: link_recovery
             provider: provider
             organization: organization
             aal: aal0
-          authenticator_assurance_level: null
+          authenticator_assurance_level: aal0
           identity:
             traits: ""
             credentials:
@@ -7902,12 +8141,14 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
           enum:
           - text
           - input
           - img
           - a
           - script
+          - div
           type: string
           x-go-enum-desc: |-
             text Text
@@ -7915,6 +8156,7 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
       required:
       - attributes
       - group
@@ -7943,12 +8185,14 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
           enum:
           - text
           - input
           - img
           - a
           - script
+          - div
           type: string
           x-go-enum-desc: |-
             text Text
@@ -7956,6 +8200,7 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
         title:
           $ref: '#/components/schemas/uiText'
       required:
@@ -7981,6 +8226,54 @@ components:
       - $ref: '#/components/schemas/uiNodeAnchorAttributes'
       - $ref: '#/components/schemas/uiNodeScriptAttributes'
       title: Attributes represents a list of attributes (e.g. `href="foo"` for links).
+    uiNodeDivisionAttributes:
+      description: Division sections are used for interactive widgets that require
+        a hook in the DOM / view.
+      properties:
+        class:
+          description: The script MIME type
+          type: string
+        data:
+          additionalProperties:
+            type: string
+          description: |-
+            Data is a map of key-value pairs that are passed to the division.
+
+            They may be used for `data-...` attributes.
+          type: object
+        id:
+          description: A unique identifier
+          type: string
+        node_type:
+          description: |-
+            NodeType represents this node's types. It is a mirror of `node.type` and
+            is primarily used to allow compatibility with OpenAPI 3.0. In this struct it technically always is "script".
+            text Text
+            input Input
+            img Image
+            a Anchor
+            script Script
+            div Division
+          enum:
+          - text
+          - input
+          - img
+          - a
+          - script
+          - div
+          type: string
+          x-go-enum-desc: |-
+            text Text
+            input Input
+            img Image
+            a Anchor
+            script Script
+            div Division
+      required:
+      - id
+      - node_type
+      title: DivisionAttributes represent a division section.
+      type: object
     uiNodeImageAttributes:
       properties:
         height:
@@ -7999,12 +8292,14 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
           enum:
           - text
           - input
           - img
           - a
           - script
+          - div
           type: string
           x-go-enum-desc: |-
             text Text
@@ -8012,6 +8307,7 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
         src:
           description: |-
             The image's source URL.
@@ -8097,12 +8393,14 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
           enum:
           - text
           - input
           - img
           - a
           - script
+          - div
           type: string
           x-go-enum-desc: |-
             text Text
@@ -8110,6 +8408,7 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
         onclick:
           description: |-
             OnClick may contain javascript which should be executed on click. This is primarily
@@ -8271,12 +8570,14 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
           enum:
           - text
           - input
           - img
           - a
           - script
+          - div
           type: string
           x-go-enum-desc: |-
             text Text
@@ -8284,6 +8585,7 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
         nonce:
           description: |-
             Nonce for CSP
@@ -8327,12 +8629,14 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
           enum:
           - text
           - input
           - img
           - a
           - script
+          - div
           type: string
           x-go-enum-desc: |-
             text Text
@@ -8340,6 +8644,7 @@ components:
             img Image
             a Anchor
             script Script
+            div Division
         text:
           $ref: '#/components/schemas/uiText'
       required:
@@ -8484,6 +8789,9 @@ components:
         transient_payload:
           description: Transient data to pass along to any webhooks
           type: object
+        trust_device:
+          description: Trust this device
+          type: boolean
       required:
       - csrf_token
       - method
@@ -8650,6 +8958,9 @@ components:
         transient_payload:
           description: Transient data to pass along to any webhooks
           type: object
+        trust_device:
+          description: Trust this device
+          type: boolean
       required:
       - method
       - totp_code

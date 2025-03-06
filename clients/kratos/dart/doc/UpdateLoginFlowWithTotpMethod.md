@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **method** | **String** | Method should be set to \"totp\" when logging in using the TOTP strategy. | 
 **totpCode** | **String** | The TOTP code. | 
 **transientPayload** | [**JsonObject**](.md) | Transient data to pass along to any webhooks | [optional] 
+**trustDevice** | **bool** | Trust this device | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

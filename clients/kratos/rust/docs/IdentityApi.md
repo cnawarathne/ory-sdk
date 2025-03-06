@@ -17,10 +17,12 @@ Method | HTTP request | Description
 [**get_identity_schema**](IdentityApi.md#get_identity_schema) | **GET** /schemas/{id} | Get Identity JSON Schema
 [**get_session**](IdentityApi.md#get_session) | **GET** /admin/sessions/{id} | Get Session
 [**list_identities**](IdentityApi.md#list_identities) | **GET** /admin/identities | List Identities
+[**list_identity_devices**](IdentityApi.md#list_identity_devices) | **GET** /admin/identities/{id}/devices | List an Identity's trusted devices
 [**list_identity_schemas**](IdentityApi.md#list_identity_schemas) | **GET** /schemas | Get all Identity Schemas
 [**list_identity_sessions**](IdentityApi.md#list_identity_sessions) | **GET** /admin/identities/{id}/sessions | List an Identity's Sessions
 [**list_sessions**](IdentityApi.md#list_sessions) | **GET** /admin/sessions | List All Sessions
 [**patch_identity**](IdentityApi.md#patch_identity) | **PATCH** /admin/identities/{id} | Patch an Identity
+[**patch_identity_devices**](IdentityApi.md#patch_identity_devices) | **PATCH** /admin/identities/{id}/devices/{device_id} | Patch an Identity's devices
 [**update_identity**](IdentityApi.md#update_identity) | **PUT** /admin/identities/{id} | Update an Identity
 
 
@@ -429,6 +431,36 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## list_identity_devices
+
+> Vec<models::SessionDevice> list_identity_devices(id)
+List an Identity's trusted devices
+
+This endpoint returns all trusted devices for any sessions that belong to the given Identity.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** | ID is the identity's ID. | [required] |
+
+### Return type
+
+[**Vec<models::SessionDevice>**](sessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## list_identity_schemas
 
 > Vec<models::IdentitySchemaContainer> list_identity_schemas(per_page, page, page_size, page_token)
@@ -556,6 +588,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## patch_identity_devices
+
+> Vec<models::SessionDevice> patch_identity_devices(id, device_id)
+Patch an Identity's devices
+
+Partially updates an identity's device's trusted field using [JSON Patch](https://jsonpatch.com/). Only the field `trusted` can be updated using this method. Even that can only be set to `false` using this method.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** | ID is the session's ID. | [required] |
+**device_id** | **String** | DeviceID is the Identity's Device's ID. | [required] |
+
+### Return type
+
+[**Vec<models::SessionDevice>**](sessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

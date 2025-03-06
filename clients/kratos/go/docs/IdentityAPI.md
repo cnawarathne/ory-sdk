@@ -17,10 +17,12 @@ Method | HTTP request | Description
 [**GetIdentitySchema**](IdentityAPI.md#GetIdentitySchema) | **Get** /schemas/{id} | Get Identity JSON Schema
 [**GetSession**](IdentityAPI.md#GetSession) | **Get** /admin/sessions/{id} | Get Session
 [**ListIdentities**](IdentityAPI.md#ListIdentities) | **Get** /admin/identities | List Identities
+[**ListIdentityDevices**](IdentityAPI.md#ListIdentityDevices) | **Get** /admin/identities/{id}/devices | List an Identity&#39;s trusted devices
 [**ListIdentitySchemas**](IdentityAPI.md#ListIdentitySchemas) | **Get** /schemas | Get all Identity Schemas
 [**ListIdentitySessions**](IdentityAPI.md#ListIdentitySessions) | **Get** /admin/identities/{id}/sessions | List an Identity&#39;s Sessions
 [**ListSessions**](IdentityAPI.md#ListSessions) | **Get** /admin/sessions | List All Sessions
 [**PatchIdentity**](IdentityAPI.md#PatchIdentity) | **Patch** /admin/identities/{id} | Patch an Identity
+[**PatchIdentityDevices**](IdentityAPI.md#PatchIdentityDevices) | **Patch** /admin/identities/{id}/devices/{device_id} | Patch an Identity&#39;s devices
 [**UpdateIdentity**](IdentityAPI.md#UpdateIdentity) | **Put** /admin/identities/{id} | Update an Identity
 
 
@@ -936,6 +938,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListIdentityDevices
+
+> []SessionDevice ListIdentityDevices(ctx, id).Execute()
+
+List an Identity's trusted devices
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ory/kratos-client-go"
+)
+
+func main() {
+	id := "id_example" // string | ID is the identity's ID.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IdentityAPI.ListIdentityDevices(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IdentityAPI.ListIdentityDevices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListIdentityDevices`: []SessionDevice
+	fmt.Fprintf(os.Stdout, "Response from `IdentityAPI.ListIdentityDevices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID is the identity&#39;s ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListIdentityDevicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]SessionDevice**](SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListIdentitySchemas
 
 > []IdentitySchemaContainer ListIdentitySchemas(ctx).PerPage(perPage).Page(page).PageSize(pageSize).PageToken(pageToken).Execute()
@@ -1225,6 +1297,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PatchIdentityDevices
+
+> []SessionDevice PatchIdentityDevices(ctx, id, deviceId).Execute()
+
+Patch an Identity's devices
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ory/kratos-client-go"
+)
+
+func main() {
+	id := "id_example" // string | ID is the session's ID.
+	deviceId := "deviceId_example" // string | DeviceID is the Identity's Device's ID.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IdentityAPI.PatchIdentityDevices(context.Background(), id, deviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IdentityAPI.PatchIdentityDevices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchIdentityDevices`: []SessionDevice
+	fmt.Fprintf(os.Stdout, "Response from `IdentityAPI.PatchIdentityDevices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID is the session&#39;s ID. | 
+**deviceId** | **string** | DeviceID is the Identity&#39;s Device&#39;s ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchIdentityDevicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]SessionDevice**](SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

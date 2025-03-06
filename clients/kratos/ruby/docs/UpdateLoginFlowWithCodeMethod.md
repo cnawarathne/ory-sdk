@@ -11,6 +11,7 @@
 | **method** | **String** | Method should be set to \&quot;code\&quot; when logging in using the code strategy. |  |
 | **resend** | **String** | Resend is set when the user wants to resend the code | [optional] |
 | **transient_payload** | **Object** | Transient data to pass along to any webhooks | [optional] |
+| **trust_device** | **Boolean** | Trust this device | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = OryKratosClient::UpdateLoginFlowWithCodeMethod.new(
   identifier: null,
   method: null,
   resend: null,
-  transient_payload: null
+  transient_payload: null,
+  trust_device: null
 )
 ```
 

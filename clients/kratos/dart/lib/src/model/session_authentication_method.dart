@@ -15,6 +15,7 @@ part 'session_authentication_method.g.dart';
 /// Properties:
 /// * [aal] 
 /// * [completedAt] - When the authentication challenge was completed.
+/// * [deviceTrustBased] - DeviceTrustBased indicates that this authentication method was added due to device trust
 /// * [method] 
 /// * [organization] - The Organization id used for authentication
 /// * [provider] - OIDC or SAML provider id used for authentication
@@ -27,6 +28,10 @@ abstract class SessionAuthenticationMethod implements Built<SessionAuthenticatio
   /// When the authentication challenge was completed.
   @BuiltValueField(wireName: r'completed_at')
   DateTime? get completedAt;
+
+  /// DeviceTrustBased indicates that this authentication method was added due to device trust
+  @BuiltValueField(wireName: r'device_trust_based')
+  bool? get deviceTrustBased;
 
   @BuiltValueField(wireName: r'method')
   SessionAuthenticationMethodMethodEnum? get method;
@@ -75,6 +80,13 @@ class _$SessionAuthenticationMethodSerializer implements PrimitiveSerializer<Ses
       yield serializers.serialize(
         object.completedAt,
         specifiedType: const FullType(DateTime),
+      );
+    }
+    if (object.deviceTrustBased != null) {
+      yield r'device_trust_based';
+      yield serializers.serialize(
+        object.deviceTrustBased,
+        specifiedType: const FullType(bool),
       );
     }
     if (object.method != null) {
@@ -134,6 +146,13 @@ class _$SessionAuthenticationMethodSerializer implements PrimitiveSerializer<Ses
             specifiedType: const FullType(DateTime),
           ) as DateTime;
           result.completedAt = valueDes;
+          break;
+        case r'device_trust_based':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.deviceTrustBased = valueDes;
           break;
         case r'method':
           final valueDes = serializers.deserialize(

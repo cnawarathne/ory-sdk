@@ -17,10 +17,12 @@ All URIs are relative to *http://localhost*
 | [**getIdentitySchema**](IdentityApi.md#getIdentitySchema) | **GET** /schemas/{id} | Get Identity JSON Schema |
 | [**getSession**](IdentityApi.md#getSession) | **GET** /admin/sessions/{id} | Get Session |
 | [**listIdentities**](IdentityApi.md#listIdentities) | **GET** /admin/identities | List Identities |
+| [**listIdentityDevices**](IdentityApi.md#listIdentityDevices) | **GET** /admin/identities/{id}/devices | List an Identity&#39;s trusted devices |
 | [**listIdentitySchemas**](IdentityApi.md#listIdentitySchemas) | **GET** /schemas | Get all Identity Schemas |
 | [**listIdentitySessions**](IdentityApi.md#listIdentitySessions) | **GET** /admin/identities/{id}/sessions | List an Identity&#39;s Sessions |
 | [**listSessions**](IdentityApi.md#listSessions) | **GET** /admin/sessions | List All Sessions |
 | [**patchIdentity**](IdentityApi.md#patchIdentity) | **PATCH** /admin/identities/{id} | Patch an Identity |
+| [**patchIdentityDevices**](IdentityApi.md#patchIdentityDevices) | **PATCH** /admin/identities/{id}/devices/{device_id} | Patch an Identity&#39;s devices |
 | [**updateIdentity**](IdentityApi.md#updateIdentity) | **PUT** /admin/identities/{id} | Update an Identity |
 
 
@@ -972,6 +974,78 @@ public class Example {
 | **200** | Paginated Identity List Response |  -  |
 | **0** | errorGeneric |  -  |
 
+<a id="listIdentityDevices"></a>
+# **listIdentityDevices**
+> List&lt;SessionDevice&gt; listIdentityDevices(id)
+
+List an Identity&#39;s trusted devices
+
+This endpoint returns all trusted devices for any sessions that belong to the given Identity.
+
+### Example
+```java
+// Import classes:
+import sh.ory.kratos.ApiClient;
+import sh.ory.kratos.ApiException;
+import sh.ory.kratos.Configuration;
+import sh.ory.kratos.auth.*;
+import sh.ory.kratos.models.*;
+import sh.ory.kratos.api.IdentityApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: oryAccessToken
+    ApiKeyAuth oryAccessToken = (ApiKeyAuth) defaultClient.getAuthentication("oryAccessToken");
+    oryAccessToken.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //oryAccessToken.setApiKeyPrefix("Token");
+
+    IdentityApi apiInstance = new IdentityApi(defaultClient);
+    String id = "id_example"; // String | ID is the identity's ID.
+    try {
+      List<SessionDevice> result = apiInstance.listIdentityDevices(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IdentityApi#listIdentityDevices");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| ID is the identity&#39;s ID. | |
+
+### Return type
+
+[**List&lt;SessionDevice&gt;**](SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | List Identity Devices Response |  -  |
+| **400** | errorGeneric |  -  |
+| **404** | errorGeneric |  -  |
+| **0** | errorGeneric |  -  |
+
 <a id="listIdentitySchemas"></a>
 # **listIdentitySchemas**
 > List&lt;IdentitySchemaContainer&gt; listIdentitySchemas(perPage, page, pageSize, pageToken)
@@ -1270,6 +1344,81 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | identity |  -  |
+| **400** | errorGeneric |  -  |
+| **404** | errorGeneric |  -  |
+| **409** | errorGeneric |  -  |
+| **0** | errorGeneric |  -  |
+
+<a id="patchIdentityDevices"></a>
+# **patchIdentityDevices**
+> List&lt;SessionDevice&gt; patchIdentityDevices(id, deviceId)
+
+Patch an Identity&#39;s devices
+
+Partially updates an identity&#39;s device&#39;s trusted field using [JSON Patch](https://jsonpatch.com/). Only the field &#x60;trusted&#x60; can be updated using this method. Even that can only be set to &#x60;false&#x60; using this method.
+
+### Example
+```java
+// Import classes:
+import sh.ory.kratos.ApiClient;
+import sh.ory.kratos.ApiException;
+import sh.ory.kratos.Configuration;
+import sh.ory.kratos.auth.*;
+import sh.ory.kratos.models.*;
+import sh.ory.kratos.api.IdentityApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: oryAccessToken
+    ApiKeyAuth oryAccessToken = (ApiKeyAuth) defaultClient.getAuthentication("oryAccessToken");
+    oryAccessToken.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //oryAccessToken.setApiKeyPrefix("Token");
+
+    IdentityApi apiInstance = new IdentityApi(defaultClient);
+    String id = "id_example"; // String | ID is the session's ID.
+    String deviceId = "deviceId_example"; // String | DeviceID is the Identity's Device's ID.
+    try {
+      List<SessionDevice> result = apiInstance.patchIdentityDevices(id, deviceId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IdentityApi#patchIdentityDevices");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| ID is the session&#39;s ID. | |
+| **deviceId** | **String**| DeviceID is the Identity&#39;s Device&#39;s ID. | |
+
+### Return type
+
+[**List&lt;SessionDevice&gt;**](SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | List Identity Devices Response |  -  |
 | **400** | errorGeneric |  -  |
 | **404** | errorGeneric |  -  |
 | **409** | errorGeneric |  -  |

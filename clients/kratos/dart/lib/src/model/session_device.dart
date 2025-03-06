@@ -3,6 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:ory_kratos_client/src/model/session_authentication_method.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -11,12 +13,18 @@ part 'session_device.g.dart';
 /// Device corresponding to a Session
 ///
 /// Properties:
+/// * [authenticationMethods] - A list of authenticators which were used to authenticate the session.
 /// * [id] - Device record ID
 /// * [ipAddress] - IPAddress of the client
 /// * [location] - Geo Location corresponding to the IP Address
+/// * [trusted] - Is this device trusted? (only matters if this device submitted aal2+ credentials)
 /// * [userAgent] - UserAgent of the client
 @BuiltValue()
 abstract class SessionDevice implements Built<SessionDevice, SessionDeviceBuilder> {
+  /// A list of authenticators which were used to authenticate the session.
+  @BuiltValueField(wireName: r'authentication_methods')
+  BuiltList<SessionAuthenticationMethod>? get authenticationMethods;
+
   /// Device record ID
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -28,6 +36,10 @@ abstract class SessionDevice implements Built<SessionDevice, SessionDeviceBuilde
   /// Geo Location corresponding to the IP Address
   @BuiltValueField(wireName: r'location')
   String? get location;
+
+  /// Is this device trusted? (only matters if this device submitted aal2+ credentials)
+  @BuiltValueField(wireName: r'trusted')
+  bool? get trusted;
 
   /// UserAgent of the client
   @BuiltValueField(wireName: r'user_agent')
@@ -56,6 +68,13 @@ class _$SessionDeviceSerializer implements PrimitiveSerializer<SessionDevice> {
     SessionDevice object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.authenticationMethods != null) {
+      yield r'authentication_methods';
+      yield serializers.serialize(
+        object.authenticationMethods,
+        specifiedType: const FullType(BuiltList, [FullType(SessionAuthenticationMethod)]),
+      );
+    }
     yield r'id';
     yield serializers.serialize(
       object.id,
@@ -73,6 +92,13 @@ class _$SessionDeviceSerializer implements PrimitiveSerializer<SessionDevice> {
       yield serializers.serialize(
         object.location,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.trusted != null) {
+      yield r'trusted';
+      yield serializers.serialize(
+        object.trusted,
+        specifiedType: const FullType(bool),
       );
     }
     if (object.userAgent != null) {
@@ -105,6 +131,13 @@ class _$SessionDeviceSerializer implements PrimitiveSerializer<SessionDevice> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'authentication_methods':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(SessionAuthenticationMethod)]),
+          ) as BuiltList<SessionAuthenticationMethod>;
+          result.authenticationMethods.replace(valueDes);
+          break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
@@ -125,6 +158,13 @@ class _$SessionDeviceSerializer implements PrimitiveSerializer<SessionDevice> {
             specifiedType: const FullType(String),
           ) as String;
           result.location = valueDes;
+          break;
+        case r'trusted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.trusted = valueDes;
           break;
         case r'user_agent':
           final valueDes = serializers.deserialize(

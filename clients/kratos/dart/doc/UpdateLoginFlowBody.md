@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **traits** | [**JsonObject**](.md) | The identity traits. This is a placeholder for the registration flow. | [optional] 
 **upstreamParameters** | [**JsonObject**](.md) | UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: `login_hint` (string): The `login_hint` parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. `hd` (string): The `hd` parameter limits the login/registration process to a Google Organization, e.g. `mycollege.edu`. `prompt` (string): The `prompt` specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. `select_account`. | [optional] 
 **totpCode** | **String** | The TOTP code. | 
+**trustDevice** | **bool** | Trust this device | [optional] 
 **webauthnLogin** | **String** | Login a WebAuthn Security Key  This must contain the ID of the WebAuthN connection. | [optional] 
 **lookupSecret** | **String** | The lookup secret. | 
 **address** | **String** | Address is the address to send the code to, in case that there are multiple addresses. This field is only used in two-factor flows and is ineffective for passwordless flows. | [optional] 

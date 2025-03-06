@@ -22,10 +22,12 @@ Method | HTTP request | Description
 [**getIdentitySchema**](IdentityApi.md#getidentityschema) | **GET** /schemas/{id} | Get Identity JSON Schema
 [**getSession**](IdentityApi.md#getsession) | **GET** /admin/sessions/{id} | Get Session
 [**listIdentities**](IdentityApi.md#listidentities) | **GET** /admin/identities | List Identities
+[**listIdentityDevices**](IdentityApi.md#listidentitydevices) | **GET** /admin/identities/{id}/devices | List an Identity&#39;s trusted devices
 [**listIdentitySchemas**](IdentityApi.md#listidentityschemas) | **GET** /schemas | Get all Identity Schemas
 [**listIdentitySessions**](IdentityApi.md#listidentitysessions) | **GET** /admin/identities/{id}/sessions | List an Identity&#39;s Sessions
 [**listSessions**](IdentityApi.md#listsessions) | **GET** /admin/sessions | List All Sessions
 [**patchIdentity**](IdentityApi.md#patchidentity) | **PATCH** /admin/identities/{id} | Patch an Identity
+[**patchIdentityDevices**](IdentityApi.md#patchidentitydevices) | **PATCH** /admin/identities/{id}/devices/{device_id} | Patch an Identity&#39;s devices
 [**updateIdentity**](IdentityApi.md#updateidentity) | **PUT** /admin/identities/{id} | Update an Identity
 
 
@@ -660,6 +662,53 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **listIdentityDevices**
+> BuiltList<SessionDevice> listIdentityDevices(id)
+
+List an Identity's trusted devices
+
+This endpoint returns all trusted devices for any sessions that belong to the given Identity.
+
+### Example
+```dart
+import 'package:ory_kratos_client/api.dart';
+// TODO Configure API key authorization: oryAccessToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('oryAccessToken').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('oryAccessToken').apiKeyPrefix = 'Bearer';
+
+final api = OryKratosClient().getIdentityApi();
+final String id = id_example; // String | ID is the identity's ID.
+
+try {
+    final response = api.listIdentityDevices(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling IdentityApi->listIdentityDevices: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| ID is the identity's ID. | 
+
+### Return type
+
+[**BuiltList&lt;SessionDevice&gt;**](SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **listIdentitySchemas**
 > BuiltList<IdentitySchemaContainer> listIdentitySchemas(perPage, page, pageSize, pageToken)
 
@@ -864,6 +913,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchIdentityDevices**
+> BuiltList<SessionDevice> patchIdentityDevices(id, deviceId)
+
+Patch an Identity's devices
+
+Partially updates an identity's device's trusted field using [JSON Patch](https://jsonpatch.com/). Only the field `trusted` can be updated using this method. Even that can only be set to `false` using this method.
+
+### Example
+```dart
+import 'package:ory_kratos_client/api.dart';
+// TODO Configure API key authorization: oryAccessToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('oryAccessToken').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('oryAccessToken').apiKeyPrefix = 'Bearer';
+
+final api = OryKratosClient().getIdentityApi();
+final String id = id_example; // String | ID is the session's ID.
+final String deviceId = deviceId_example; // String | DeviceID is the Identity's Device's ID.
+
+try {
+    final response = api.patchIdentityDevices(id, deviceId);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling IdentityApi->patchIdentityDevices: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| ID is the session's ID. | 
+ **deviceId** | **String**| DeviceID is the Identity's Device's ID. | 
+
+### Return type
+
+[**BuiltList&lt;SessionDevice&gt;**](SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

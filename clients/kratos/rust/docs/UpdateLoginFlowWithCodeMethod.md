@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **method** | **String** | Method should be set to \"code\" when logging in using the code strategy. | 
 **resend** | Option<**String**> | Resend is set when the user wants to resend the code | [optional]
 **transient_payload** | Option<[**serde_json::Value**](.md)> | Transient data to pass along to any webhooks | [optional]
+**trust_device** | Option<**bool**> | Trust this device | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

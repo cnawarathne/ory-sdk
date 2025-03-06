@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **method** | **str** | Method should be set to \&quot;totp\&quot; when logging in using the TOTP strategy. | 
 **totp_code** | **str** | The TOTP code. | 
 **transient_payload** | **object** | Transient data to pass along to any webhooks | [optional] 
+**trust_device** | **bool** | Trust this device | [optional] 
 
 ## Example
 

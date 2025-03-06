@@ -15,6 +15,8 @@ class _$UpdateLoginFlowWithTotpMethod extends UpdateLoginFlowWithTotpMethod {
   final String totpCode;
   @override
   final JsonObject? transientPayload;
+  @override
+  final bool? trustDevice;
 
   factory _$UpdateLoginFlowWithTotpMethod(
           [void Function(UpdateLoginFlowWithTotpMethodBuilder)? updates]) =>
@@ -24,7 +26,8 @@ class _$UpdateLoginFlowWithTotpMethod extends UpdateLoginFlowWithTotpMethod {
       {this.csrfToken,
       required this.method,
       required this.totpCode,
-      this.transientPayload})
+      this.transientPayload,
+      this.trustDevice})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         method, r'UpdateLoginFlowWithTotpMethod', 'method');
@@ -48,7 +51,8 @@ class _$UpdateLoginFlowWithTotpMethod extends UpdateLoginFlowWithTotpMethod {
         csrfToken == other.csrfToken &&
         method == other.method &&
         totpCode == other.totpCode &&
-        transientPayload == other.transientPayload;
+        transientPayload == other.transientPayload &&
+        trustDevice == other.trustDevice;
   }
 
   @override
@@ -58,6 +62,7 @@ class _$UpdateLoginFlowWithTotpMethod extends UpdateLoginFlowWithTotpMethod {
     _$hash = $jc(_$hash, method.hashCode);
     _$hash = $jc(_$hash, totpCode.hashCode);
     _$hash = $jc(_$hash, transientPayload.hashCode);
+    _$hash = $jc(_$hash, trustDevice.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -68,7 +73,8 @@ class _$UpdateLoginFlowWithTotpMethod extends UpdateLoginFlowWithTotpMethod {
           ..add('csrfToken', csrfToken)
           ..add('method', method)
           ..add('totpCode', totpCode)
-          ..add('transientPayload', transientPayload))
+          ..add('transientPayload', transientPayload)
+          ..add('trustDevice', trustDevice))
         .toString();
   }
 }
@@ -96,6 +102,10 @@ class UpdateLoginFlowWithTotpMethodBuilder
   set transientPayload(JsonObject? transientPayload) =>
       _$this._transientPayload = transientPayload;
 
+  bool? _trustDevice;
+  bool? get trustDevice => _$this._trustDevice;
+  set trustDevice(bool? trustDevice) => _$this._trustDevice = trustDevice;
+
   UpdateLoginFlowWithTotpMethodBuilder() {
     UpdateLoginFlowWithTotpMethod._defaults(this);
   }
@@ -107,6 +117,7 @@ class UpdateLoginFlowWithTotpMethodBuilder
       _method = $v.method;
       _totpCode = $v.totpCode;
       _transientPayload = $v.transientPayload;
+      _trustDevice = $v.trustDevice;
       _$v = null;
     }
     return this;
@@ -134,7 +145,8 @@ class UpdateLoginFlowWithTotpMethodBuilder
                 method, r'UpdateLoginFlowWithTotpMethod', 'method'),
             totpCode: BuiltValueNullFieldError.checkNotNull(
                 totpCode, r'UpdateLoginFlowWithTotpMethod', 'totpCode'),
-            transientPayload: transientPayload);
+            transientPayload: transientPayload,
+            trustDevice: trustDevice);
     replace(_$result);
     return _$result;
   }

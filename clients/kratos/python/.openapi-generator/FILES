@@ -89,6 +89,7 @@ docs/UiContainer.md
 docs/UiNode.md
 docs/UiNodeAnchorAttributes.md
 docs/UiNodeAttributes.md
+docs/UiNodeDivisionAttributes.md
 docs/UiNodeImageAttributes.md
 docs/UiNodeInputAttributes.md
 docs/UiNodeMeta.md
@@ -224,6 +225,7 @@ ory_kratos_client/models/ui_container.py
 ory_kratos_client/models/ui_node.py
 ory_kratos_client/models/ui_node_anchor_attributes.py
 ory_kratos_client/models/ui_node_attributes.py
+ory_kratos_client/models/ui_node_division_attributes.py
 ory_kratos_client/models/ui_node_image_attributes.py
 ory_kratos_client/models/ui_node_input_attributes.py
 ory_kratos_client/models/ui_node_meta.py
@@ -359,6 +361,7 @@ test/test_ui_container.py
 test/test_ui_node.py
 test/test_ui_node_anchor_attributes.py
 test/test_ui_node_attributes.py
+test/test_ui_node_division_attributes.py
 test/test_ui_node_image_attributes.py
 test/test_ui_node_input_attributes.py
 test/test_ui_node_meta.py

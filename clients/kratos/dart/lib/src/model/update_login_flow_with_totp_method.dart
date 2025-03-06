@@ -16,6 +16,7 @@ part 'update_login_flow_with_totp_method.g.dart';
 /// * [method] - Method should be set to \"totp\" when logging in using the TOTP strategy.
 /// * [totpCode] - The TOTP code.
 /// * [transientPayload] - Transient data to pass along to any webhooks
+/// * [trustDevice] - Trust this device
 @BuiltValue()
 abstract class UpdateLoginFlowWithTotpMethod implements Built<UpdateLoginFlowWithTotpMethod, UpdateLoginFlowWithTotpMethodBuilder> {
   /// Sending the anti-csrf token is only required for browser login flows.
@@ -33,6 +34,10 @@ abstract class UpdateLoginFlowWithTotpMethod implements Built<UpdateLoginFlowWit
   /// Transient data to pass along to any webhooks
   @BuiltValueField(wireName: r'transient_payload')
   JsonObject? get transientPayload;
+
+  /// Trust this device
+  @BuiltValueField(wireName: r'trust_device')
+  bool? get trustDevice;
 
   UpdateLoginFlowWithTotpMethod._();
 
@@ -79,6 +84,13 @@ class _$UpdateLoginFlowWithTotpMethodSerializer implements PrimitiveSerializer<U
       yield serializers.serialize(
         object.transientPayload,
         specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.trustDevice != null) {
+      yield r'trust_device';
+      yield serializers.serialize(
+        object.trustDevice,
+        specifiedType: const FullType(bool),
       );
     }
   }
@@ -131,6 +143,13 @@ class _$UpdateLoginFlowWithTotpMethodSerializer implements PrimitiveSerializer<U
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.transientPayload = valueDes;
+          break;
+        case r'trust_device':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.trustDevice = valueDes;
           break;
         default:
           unhandled.add(key);

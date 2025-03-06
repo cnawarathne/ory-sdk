@@ -3,7 +3,7 @@ Ory Identities API
 
 This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
 
-API version: v1.3.8
+API version: v1.4.0-alpha.0
 Contact: office@ory.sh
 */
 
@@ -1076,22 +1076,22 @@ func (a *FrontendAPIService) CreateBrowserLoginFlowExecute(r FrontendAPICreateBr
 	localVarFormParams := url.Values{}
 
 	if r.refresh != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "refresh", r.refresh, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "refresh", r.refresh, "form", "")
 	}
 	if r.aal != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "aal", r.aal, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "aal", r.aal, "form", "")
 	}
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	if r.loginChallenge != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "login_challenge", r.loginChallenge, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "login_challenge", r.loginChallenge, "form", "")
 	}
 	if r.organization != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "form", "")
 	}
 	if r.via != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "via", r.via, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "via", r.via, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1111,7 +1111,7 @@ func (a *FrontendAPIService) CreateBrowserLoginFlowExecute(r FrontendAPICreateBr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1238,7 +1238,7 @@ func (a *FrontendAPIService) CreateBrowserLogoutFlowExecute(r FrontendAPICreateB
 	localVarFormParams := url.Values{}
 
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1258,7 +1258,7 @@ func (a *FrontendAPIService) CreateBrowserLogoutFlowExecute(r FrontendAPICreateB
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1391,7 +1391,7 @@ func (a *FrontendAPIService) CreateBrowserRecoveryFlowExecute(r FrontendAPICreat
 	localVarFormParams := url.Values{}
 
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1558,16 +1558,16 @@ func (a *FrontendAPIService) CreateBrowserRegistrationFlowExecute(r FrontendAPIC
 	localVarFormParams := url.Values{}
 
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	if r.loginChallenge != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "login_challenge", r.loginChallenge, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "login_challenge", r.loginChallenge, "form", "")
 	}
 	if r.afterVerificationReturnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "after_verification_return_to", r.afterVerificationReturnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "after_verification_return_to", r.afterVerificationReturnTo, "form", "")
 	}
 	if r.organization != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1716,7 +1716,7 @@ func (a *FrontendAPIService) CreateBrowserSettingsFlowExecute(r FrontendAPICreat
 	localVarFormParams := url.Values{}
 
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1736,7 +1736,7 @@ func (a *FrontendAPIService) CreateBrowserSettingsFlowExecute(r FrontendAPICreat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1876,7 +1876,7 @@ func (a *FrontendAPIService) CreateBrowserVerificationFlowExecute(r FrontendAPIC
 	localVarFormParams := url.Values{}
 
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2172,22 +2172,22 @@ func (a *FrontendAPIService) CreateNativeLoginFlowExecute(r FrontendAPICreateNat
 	localVarFormParams := url.Values{}
 
 	if r.refresh != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "refresh", r.refresh, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "refresh", r.refresh, "form", "")
 	}
 	if r.aal != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "aal", r.aal, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "aal", r.aal, "form", "")
 	}
 	if r.returnSessionTokenExchangeCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_session_token_exchange_code", r.returnSessionTokenExchangeCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_session_token_exchange_code", r.returnSessionTokenExchangeCode, "form", "")
 	}
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	if r.organization != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "form", "")
 	}
 	if r.via != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "via", r.via, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "via", r.via, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2207,7 +2207,7 @@ func (a *FrontendAPIService) CreateNativeLoginFlowExecute(r FrontendAPICreateNat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -2480,13 +2480,13 @@ func (a *FrontendAPIService) CreateNativeRegistrationFlowExecute(r FrontendAPICr
 	localVarFormParams := url.Values{}
 
 	if r.returnSessionTokenExchangeCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_session_token_exchange_code", r.returnSessionTokenExchangeCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_session_token_exchange_code", r.returnSessionTokenExchangeCode, "form", "")
 	}
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	if r.organization != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2652,7 +2652,7 @@ func (a *FrontendAPIService) CreateNativeSettingsFlowExecute(r FrontendAPICreate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -2773,7 +2773,7 @@ func (a *FrontendAPIService) CreateNativeVerificationFlowExecute(r FrontendAPICr
 	localVarFormParams := url.Values{}
 
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2926,10 +2926,10 @@ func (a *FrontendAPIService) DisableMyOtherSessionsExecute(r FrontendAPIDisableM
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -3078,10 +3078,10 @@ func (a *FrontendAPIService) DisableMySessionExecute(r FrontendAPIDisableMySessi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -3204,8 +3204,8 @@ func (a *FrontendAPIService) ExchangeSessionTokenExecute(r FrontendAPIExchangeSe
 		return localVarReturnValue, nil, reportError("returnToCode is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "init_code", r.initCode, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "return_to_code", r.returnToCode, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "init_code", r.initCode, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "return_to_code", r.returnToCode, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3362,7 +3362,7 @@ func (a *FrontendAPIService) GetFlowErrorExecute(r FrontendAPIGetFlowErrorReques
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3533,7 +3533,7 @@ func (a *FrontendAPIService) GetLoginFlowExecute(r FrontendAPIGetLoginFlowReques
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3552,7 +3552,7 @@ func (a *FrontendAPIService) GetLoginFlowExecute(r FrontendAPIGetLoginFlowReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -3711,7 +3711,7 @@ func (a *FrontendAPIService) GetRecoveryFlowExecute(r FrontendAPIGetRecoveryFlow
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3730,7 +3730,7 @@ func (a *FrontendAPIService) GetRecoveryFlowExecute(r FrontendAPIGetRecoveryFlow
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -3883,7 +3883,7 @@ func (a *FrontendAPIService) GetRegistrationFlowExecute(r FrontendAPIGetRegistra
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3902,7 +3902,7 @@ func (a *FrontendAPIService) GetRegistrationFlowExecute(r FrontendAPIGetRegistra
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -4069,7 +4069,7 @@ func (a *FrontendAPIService) GetSettingsFlowExecute(r FrontendAPIGetSettingsFlow
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4088,10 +4088,10 @@ func (a *FrontendAPIService) GetSettingsFlowExecute(r FrontendAPIGetSettingsFlow
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -4261,7 +4261,7 @@ func (a *FrontendAPIService) GetVerificationFlowExecute(r FrontendAPIGetVerifica
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4280,7 +4280,7 @@ func (a *FrontendAPIService) GetVerificationFlowExecute(r FrontendAPIGetVerifica
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -4545,22 +4545,22 @@ func (a *FrontendAPIService) ListMySessionsExecute(r FrontendAPIListMySessionsRe
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	} else {
 		var defaultValue int64 = 250
 		r.perPage = &defaultValue
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int64 = 250
 		r.pageSize = &defaultValue
 	}
 	if r.pageToken != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_token", r.pageToken, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_token", r.pageToken, "form", "")
 	} else {
 		var defaultValue string = "1"
 		r.pageToken = &defaultValue
@@ -4583,10 +4583,10 @@ func (a *FrontendAPIService) ListMySessionsExecute(r FrontendAPIListMySessionsRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -4905,7 +4905,7 @@ func (a *FrontendAPIService) ToSessionExecute(r FrontendAPIToSessionRequest) (*S
 	localVarFormParams := url.Values{}
 
 	if r.tokenizeAs != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenize_as", r.tokenizeAs, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenize_as", r.tokenizeAs, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4925,10 +4925,10 @@ func (a *FrontendAPIService) ToSessionExecute(r FrontendAPIToSessionRequest) (*S
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -5255,7 +5255,7 @@ func (a *FrontendAPIService) UpdateLoginFlowExecute(r FrontendAPIUpdateLoginFlow
 		return localVarReturnValue, nil, reportError("updateLoginFlowBody is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
@@ -5274,10 +5274,10 @@ func (a *FrontendAPIService) UpdateLoginFlowExecute(r FrontendAPIUpdateLoginFlow
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.updateLoginFlowBody
@@ -5436,10 +5436,10 @@ func (a *FrontendAPIService) UpdateLogoutFlowExecute(r FrontendAPIUpdateLogoutFl
 	localVarFormParams := url.Values{}
 
 	if r.token != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	if r.returnTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_to", r.returnTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5459,7 +5459,7 @@ func (a *FrontendAPIService) UpdateLogoutFlowExecute(r FrontendAPIUpdateLogoutFl
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -5590,9 +5590,9 @@ func (a *FrontendAPIService) UpdateRecoveryFlowExecute(r FrontendAPIUpdateRecove
 		return localVarReturnValue, nil, reportError("updateRecoveryFlowBody is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "form", "")
 	if r.token != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
@@ -5612,7 +5612,7 @@ func (a *FrontendAPIService) UpdateRecoveryFlowExecute(r FrontendAPIUpdateRecove
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.updateRecoveryFlowBody
@@ -5792,7 +5792,7 @@ func (a *FrontendAPIService) UpdateRegistrationFlowExecute(r FrontendAPIUpdateRe
 		return localVarReturnValue, nil, reportError("updateRegistrationFlowBody is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
@@ -5811,7 +5811,7 @@ func (a *FrontendAPIService) UpdateRegistrationFlowExecute(r FrontendAPIUpdateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.updateRegistrationFlowBody
@@ -6013,7 +6013,7 @@ func (a *FrontendAPIService) UpdateSettingsFlowExecute(r FrontendAPIUpdateSettin
 		return localVarReturnValue, nil, reportError("updateSettingsFlowBody is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
@@ -6032,10 +6032,10 @@ func (a *FrontendAPIService) UpdateSettingsFlowExecute(r FrontendAPIUpdateSettin
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xSessionToken != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Session-Token", r.xSessionToken, "simple", "")
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.updateSettingsFlowBody
@@ -6232,9 +6232,9 @@ func (a *FrontendAPIService) UpdateVerificationFlowExecute(r FrontendAPIUpdateVe
 		return localVarReturnValue, nil, reportError("updateVerificationFlowBody is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "flow", r.flow, "form", "")
 	if r.token != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
@@ -6254,7 +6254,7 @@ func (a *FrontendAPIService) UpdateVerificationFlowExecute(r FrontendAPIUpdateVe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.cookie != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Cookie", r.cookie, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.updateVerificationFlowBody

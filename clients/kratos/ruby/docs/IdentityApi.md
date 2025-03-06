@@ -17,10 +17,12 @@ All URIs are relative to *http://localhost*
 | [**get_identity_schema**](IdentityApi.md#get_identity_schema) | **GET** /schemas/{id} | Get Identity JSON Schema |
 | [**get_session**](IdentityApi.md#get_session) | **GET** /admin/sessions/{id} | Get Session |
 | [**list_identities**](IdentityApi.md#list_identities) | **GET** /admin/identities | List Identities |
+| [**list_identity_devices**](IdentityApi.md#list_identity_devices) | **GET** /admin/identities/{id}/devices | List an Identity&#39;s trusted devices |
 | [**list_identity_schemas**](IdentityApi.md#list_identity_schemas) | **GET** /schemas | Get all Identity Schemas |
 | [**list_identity_sessions**](IdentityApi.md#list_identity_sessions) | **GET** /admin/identities/{id}/sessions | List an Identity&#39;s Sessions |
 | [**list_sessions**](IdentityApi.md#list_sessions) | **GET** /admin/sessions | List All Sessions |
 | [**patch_identity**](IdentityApi.md#patch_identity) | **PATCH** /admin/identities/{id} | Patch an Identity |
+| [**patch_identity_devices**](IdentityApi.md#patch_identity_devices) | **PATCH** /admin/identities/{id}/devices/{device_id} | Patch an Identity&#39;s devices |
 | [**update_identity**](IdentityApi.md#update_identity) | **PUT** /admin/identities/{id} | Update an Identity |
 
 
@@ -40,9 +42,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -113,9 +115,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -186,9 +188,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -259,9 +261,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -334,9 +336,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -404,9 +406,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -480,9 +482,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -550,9 +552,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -620,9 +622,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -691,9 +693,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -830,9 +832,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -905,9 +907,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -969,6 +971,77 @@ end
 ### Return type
 
 [**Array&lt;Identity&gt;**](Identity.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_identity_devices
+
+> <Array<SessionDevice>> list_identity_devices(id)
+
+List an Identity's trusted devices
+
+This endpoint returns all trusted devices for any sessions that belong to the given Identity.
+
+### Examples
+
+```ruby
+require 'time'
+require 'ory-kratos-client'
+# setup authorization
+OryKratosClient.configure do |config|
+  # Configure API key authorization: oryAccessToken
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = OryKratosClient::IdentityApi.new
+id = 'id_example' # String | ID is the identity's ID.
+
+begin
+  # List an Identity's trusted devices
+  result = api_instance.list_identity_devices(id)
+  p result
+rescue OryKratosClient::ApiError => e
+  puts "Error when calling IdentityApi->list_identity_devices: #{e}"
+end
+```
+
+#### Using the list_identity_devices_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<SessionDevice>>, Integer, Hash)> list_identity_devices_with_http_info(id)
+
+```ruby
+begin
+  # List an Identity's trusted devices
+  data, status_code, headers = api_instance.list_identity_devices_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<SessionDevice>>
+rescue OryKratosClient::ApiError => e
+  puts "Error when calling IdentityApi->list_identity_devices_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | ID is the identity&#39;s ID. |  |
+
+### Return type
+
+[**Array&lt;SessionDevice&gt;**](SessionDevice.md)
 
 ### Authorization
 
@@ -1068,9 +1141,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -1151,9 +1224,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -1230,9 +1303,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new
@@ -1289,6 +1362,79 @@ end
 - **Accept**: application/json
 
 
+## patch_identity_devices
+
+> <Array<SessionDevice>> patch_identity_devices(id, device_id)
+
+Patch an Identity's devices
+
+Partially updates an identity's device's trusted field using [JSON Patch](https://jsonpatch.com/). Only the field `trusted` can be updated using this method. Even that can only be set to `false` using this method.
+
+### Examples
+
+```ruby
+require 'time'
+require 'ory-kratos-client'
+# setup authorization
+OryKratosClient.configure do |config|
+  # Configure API key authorization: oryAccessToken
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = OryKratosClient::IdentityApi.new
+id = 'id_example' # String | ID is the session's ID.
+device_id = 'device_id_example' # String | DeviceID is the Identity's Device's ID.
+
+begin
+  # Patch an Identity's devices
+  result = api_instance.patch_identity_devices(id, device_id)
+  p result
+rescue OryKratosClient::ApiError => e
+  puts "Error when calling IdentityApi->patch_identity_devices: #{e}"
+end
+```
+
+#### Using the patch_identity_devices_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<SessionDevice>>, Integer, Hash)> patch_identity_devices_with_http_info(id, device_id)
+
+```ruby
+begin
+  # Patch an Identity's devices
+  data, status_code, headers = api_instance.patch_identity_devices_with_http_info(id, device_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<SessionDevice>>
+rescue OryKratosClient::ApiError => e
+  puts "Error when calling IdentityApi->patch_identity_devices_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | ID is the session&#39;s ID. |  |
+| **device_id** | **String** | DeviceID is the Identity&#39;s Device&#39;s ID. |  |
+
+### Return type
+
+[**Array&lt;SessionDevice&gt;**](SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../README.md#oryAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## update_identity
 
 > <Identity> update_identity(id, opts)
@@ -1305,9 +1451,9 @@ require 'ory-kratos-client'
 # setup authorization
 OryKratosClient.configure do |config|
   # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OryKratosClient::IdentityApi.new

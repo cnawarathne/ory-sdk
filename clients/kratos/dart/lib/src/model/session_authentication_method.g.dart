@@ -130,6 +130,8 @@ class _$SessionAuthenticationMethod extends SessionAuthenticationMethod {
   @override
   final DateTime? completedAt;
   @override
+  final bool? deviceTrustBased;
+  @override
   final SessionAuthenticationMethodMethodEnum? method;
   @override
   final String? organization;
@@ -143,6 +145,7 @@ class _$SessionAuthenticationMethod extends SessionAuthenticationMethod {
   _$SessionAuthenticationMethod._(
       {this.aal,
       this.completedAt,
+      this.deviceTrustBased,
       this.method,
       this.organization,
       this.provider})
@@ -163,6 +166,7 @@ class _$SessionAuthenticationMethod extends SessionAuthenticationMethod {
     return other is SessionAuthenticationMethod &&
         aal == other.aal &&
         completedAt == other.completedAt &&
+        deviceTrustBased == other.deviceTrustBased &&
         method == other.method &&
         organization == other.organization &&
         provider == other.provider;
@@ -173,6 +177,7 @@ class _$SessionAuthenticationMethod extends SessionAuthenticationMethod {
     var _$hash = 0;
     _$hash = $jc(_$hash, aal.hashCode);
     _$hash = $jc(_$hash, completedAt.hashCode);
+    _$hash = $jc(_$hash, deviceTrustBased.hashCode);
     _$hash = $jc(_$hash, method.hashCode);
     _$hash = $jc(_$hash, organization.hashCode);
     _$hash = $jc(_$hash, provider.hashCode);
@@ -185,6 +190,7 @@ class _$SessionAuthenticationMethod extends SessionAuthenticationMethod {
     return (newBuiltValueToStringHelper(r'SessionAuthenticationMethod')
           ..add('aal', aal)
           ..add('completedAt', completedAt)
+          ..add('deviceTrustBased', deviceTrustBased)
           ..add('method', method)
           ..add('organization', organization)
           ..add('provider', provider))
@@ -205,6 +211,11 @@ class SessionAuthenticationMethodBuilder
   DateTime? _completedAt;
   DateTime? get completedAt => _$this._completedAt;
   set completedAt(DateTime? completedAt) => _$this._completedAt = completedAt;
+
+  bool? _deviceTrustBased;
+  bool? get deviceTrustBased => _$this._deviceTrustBased;
+  set deviceTrustBased(bool? deviceTrustBased) =>
+      _$this._deviceTrustBased = deviceTrustBased;
 
   SessionAuthenticationMethodMethodEnum? _method;
   SessionAuthenticationMethodMethodEnum? get method => _$this._method;
@@ -228,6 +239,7 @@ class SessionAuthenticationMethodBuilder
     if ($v != null) {
       _aal = $v.aal;
       _completedAt = $v.completedAt;
+      _deviceTrustBased = $v.deviceTrustBased;
       _method = $v.method;
       _organization = $v.organization;
       _provider = $v.provider;
@@ -255,6 +267,7 @@ class SessionAuthenticationMethodBuilder
         new _$SessionAuthenticationMethod._(
             aal: aal,
             completedAt: completedAt,
+            deviceTrustBased: deviceTrustBased,
             method: method,
             organization: organization,
             provider: provider);

@@ -10,6 +10,7 @@ A singular authenticator used during authentication / login.
 |------------ | ------------- | ------------- | -------------|
 |**aal** | **AuthenticatorAssuranceLevel** |  |  [optional] |
 |**completedAt** | **OffsetDateTime** | When the authentication challenge was completed. |  [optional] |
+|**deviceTrustBased** | **Boolean** | DeviceTrustBased indicates that this authentication method was added due to device trust |  [optional] |
 |**method** | [**MethodEnum**](#MethodEnum) |  |  [optional] |
 |**organization** | **String** | The Organization id used for authentication |  [optional] |
 |**provider** | **String** | OIDC or SAML provider id used for authentication |  [optional] |

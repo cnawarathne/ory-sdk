@@ -31,5 +31,11 @@ void main() {
       // TODO
     });
 
+    // Trust this device
+    // bool trustDevice
+    test('to test the property `trustDevice`', () async {
+      // TODO
+    });
+
   });
 }

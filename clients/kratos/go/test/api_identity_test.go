@@ -191,6 +191,20 @@ func Test_client_IdentityAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentityAPIService ListIdentityDevices", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.IdentityAPI.ListIdentityDevices(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentityAPIService ListIdentitySchemas", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -236,6 +250,21 @@ func Test_client_IdentityAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.IdentityAPI.PatchIdentity(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityAPIService PatchIdentityDevices", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var deviceId string
+
+		resp, httpRes, err := apiClient.IdentityAPI.PatchIdentityDevices(context.Background(), id, deviceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

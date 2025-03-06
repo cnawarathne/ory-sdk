@@ -104,6 +104,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UiNodeAnchorAttributes.serializer)
       ..add(UiNodeAnchorAttributesNodeTypeEnum.serializer)
       ..add(UiNodeAttributes.serializer)
+      ..add(UiNodeDivisionAttributes.serializer)
+      ..add(UiNodeDivisionAttributesNodeTypeEnum.serializer)
       ..add(UiNodeGroupEnum.serializer)
       ..add(UiNodeImageAttributes.serializer)
       ..add(UiNodeImageAttributesNodeTypeEnum.serializer)
@@ -215,6 +217,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
               BuiltList, const [const FullType(SessionAuthenticationMethod)]),
           () => new ListBuilder<SessionAuthenticationMethod>())
       ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(SessionAuthenticationMethod)]),
+          () => new ListBuilder<SessionAuthenticationMethod>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(SessionDevice)]),
           () => new ListBuilder<SessionDevice>())
       ..addBuilderFactory(
@@ -292,6 +298,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(VerifiableIdentityAddress)]),
           () => new ListBuilder<VerifiableIdentityAddress>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltMap, const [const FullType(String), const FullType(String)]),
+          () => new MapBuilder<String, String>())
       ..addBuilderFactory(
           const FullType(
               BuiltMap, const [const FullType(String), const FullType(String)]),

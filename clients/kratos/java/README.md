@@ -1,8 +1,8 @@
 # kratos-client
 
 Ory Identities API
-- API version: v1.3.8
-  - Build date: 2025-02-25T15:51:40.899187259Z[Etc/UTC]
+- API version: v1.4.0-alpha.0
+  - Build date: 2025-03-06T19:15:57.465639357Z[Etc/UTC]
   - Generator version: 7.7.0
 
 This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
@@ -42,7 +42,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>sh.ory.kratos</groupId>
   <artifactId>kratos-client</artifactId>
-  <version>v1.3.8</version>
+  <version>v1.4.0-alpha.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "sh.ory.kratos:kratos-client:v1.3.8"
+     implementation "sh.ory.kratos:kratos-client:v1.4.0-alpha.0"
   }
 ```
 
@@ -72,7 +72,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/kratos-client-v1.3.8.jar`
+* `target/kratos-client-v1.4.0-alpha.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -170,10 +170,12 @@ Class | Method | HTTP request | Description
 *IdentityApi* | [**getIdentitySchema**](docs/IdentityApi.md#getIdentitySchema) | **GET** /schemas/{id} | Get Identity JSON Schema
 *IdentityApi* | [**getSession**](docs/IdentityApi.md#getSession) | **GET** /admin/sessions/{id} | Get Session
 *IdentityApi* | [**listIdentities**](docs/IdentityApi.md#listIdentities) | **GET** /admin/identities | List Identities
+*IdentityApi* | [**listIdentityDevices**](docs/IdentityApi.md#listIdentityDevices) | **GET** /admin/identities/{id}/devices | List an Identity&#39;s trusted devices
 *IdentityApi* | [**listIdentitySchemas**](docs/IdentityApi.md#listIdentitySchemas) | **GET** /schemas | Get all Identity Schemas
 *IdentityApi* | [**listIdentitySessions**](docs/IdentityApi.md#listIdentitySessions) | **GET** /admin/identities/{id}/sessions | List an Identity&#39;s Sessions
 *IdentityApi* | [**listSessions**](docs/IdentityApi.md#listSessions) | **GET** /admin/sessions | List All Sessions
 *IdentityApi* | [**patchIdentity**](docs/IdentityApi.md#patchIdentity) | **PATCH** /admin/identities/{id} | Patch an Identity
+*IdentityApi* | [**patchIdentityDevices**](docs/IdentityApi.md#patchIdentityDevices) | **PATCH** /admin/identities/{id}/devices/{device_id} | Patch an Identity&#39;s devices
 *IdentityApi* | [**updateIdentity**](docs/IdentityApi.md#updateIdentity) | **PUT** /admin/identities/{id} | Update an Identity
 *MetadataApi* | [**getVersion**](docs/MetadataApi.md#getVersion) | **GET** /version | Return Running Software Version.
 *MetadataApi* | [**isAlive**](docs/MetadataApi.md#isAlive) | **GET** /health/alive | Check HTTP Server Status
@@ -263,6 +265,7 @@ Class | Method | HTTP request | Description
  - [UiNode](docs/UiNode.md)
  - [UiNodeAnchorAttributes](docs/UiNodeAnchorAttributes.md)
  - [UiNodeAttributes](docs/UiNodeAttributes.md)
+ - [UiNodeDivisionAttributes](docs/UiNodeDivisionAttributes.md)
  - [UiNodeImageAttributes](docs/UiNodeImageAttributes.md)
  - [UiNodeInputAttributes](docs/UiNodeInputAttributes.md)
  - [UiNodeMeta](docs/UiNodeMeta.md)

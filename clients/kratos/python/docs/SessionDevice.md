@@ -6,9 +6,11 @@ Device corresponding to a Session
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**authentication_methods** | [**List[SessionAuthenticationMethod]**](SessionAuthenticationMethod.md) | A list of authenticators which were used to authenticate the session. | [optional] 
 **id** | **str** | Device record ID | 
 **ip_address** | **str** | IPAddress of the client | [optional] 
 **location** | **str** | Geo Location corresponding to the IP Address | [optional] 
+**trusted** | **bool** | Is this device trusted? (only matters if this device submitted aal2+ credentials) | [optional] 
 **user_agent** | **str** | UserAgent of the client | [optional] 
 
 ## Example

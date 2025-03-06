@@ -17,10 +17,12 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**getIdentitySchema()**](IdentityApi.md#getIdentitySchema) | **GET** /schemas/{id} | Get Identity JSON Schema |
 | [**getSession()**](IdentityApi.md#getSession) | **GET** /admin/sessions/{id} | Get Session |
 | [**listIdentities()**](IdentityApi.md#listIdentities) | **GET** /admin/identities | List Identities |
+| [**listIdentityDevices()**](IdentityApi.md#listIdentityDevices) | **GET** /admin/identities/{id}/devices | List an Identity&#39;s trusted devices |
 | [**listIdentitySchemas()**](IdentityApi.md#listIdentitySchemas) | **GET** /schemas | Get all Identity Schemas |
 | [**listIdentitySessions()**](IdentityApi.md#listIdentitySessions) | **GET** /admin/identities/{id}/sessions | List an Identity&#39;s Sessions |
 | [**listSessions()**](IdentityApi.md#listSessions) | **GET** /admin/sessions | List All Sessions |
 | [**patchIdentity()**](IdentityApi.md#patchIdentity) | **PATCH** /admin/identities/{id} | Patch an Identity |
+| [**patchIdentityDevices()**](IdentityApi.md#patchIdentityDevices) | **PATCH** /admin/identities/{id}/devices/{device_id} | Patch an Identity&#39;s devices |
 | [**updateIdentity()**](IdentityApi.md#updateIdentity) | **PUT** /admin/identities/{id} | Update an Identity |
 
 
@@ -848,6 +850,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listIdentityDevices()`
+
+```php
+listIdentityDevices($id): \Ory\Kratos\Client\Model\SessionDevice[]
+```
+
+List an Identity's trusted devices
+
+This endpoint returns all trusted devices for any sessions that belong to the given Identity.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: oryAccessToken
+$config = Ory\Kratos\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Ory\Kratos\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new Ory\Kratos\Client\Api\IdentityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID is the identity's ID.
+
+try {
+    $result = $apiInstance->listIdentityDevices($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IdentityApi->listIdentityDevices: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID is the identity&#39;s ID. | |
+
+### Return type
+
+[**\Ory\Kratos\Client\Model\SessionDevice[]**](../Model/SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../../README.md#oryAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listIdentitySchemas()`
 
 ```php
@@ -1108,6 +1172,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `patchIdentityDevices()`
+
+```php
+patchIdentityDevices($id, $deviceId): \Ory\Kratos\Client\Model\SessionDevice[]
+```
+
+Patch an Identity's devices
+
+Partially updates an identity's device's trusted field using [JSON Patch](https://jsonpatch.com/). Only the field `trusted` can be updated using this method. Even that can only be set to `false` using this method.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: oryAccessToken
+$config = Ory\Kratos\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Ory\Kratos\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new Ory\Kratos\Client\Api\IdentityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | ID is the session's ID.
+$deviceId = 'deviceId_example'; // string | DeviceID is the Identity's Device's ID.
+
+try {
+    $result = $apiInstance->patchIdentityDevices($id, $deviceId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IdentityApi->patchIdentityDevices: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID is the session&#39;s ID. | |
+| **deviceId** | **string**| DeviceID is the Identity&#39;s Device&#39;s ID. | |
+
+### Return type
+
+[**\Ory\Kratos\Client\Model\SessionDevice[]**](../Model/SessionDevice.md)
+
+### Authorization
+
+[oryAccessToken](../../README.md#oryAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Aal** | Pointer to [**AuthenticatorAssuranceLevel**](AuthenticatorAssuranceLevel.md) |  | [optional] 
 **CompletedAt** | Pointer to **time.Time** | When the authentication challenge was completed. | [optional] 
+**DeviceTrustBased** | Pointer to **bool** | DeviceTrustBased indicates that this authentication method was added due to device trust | [optional] 
 **Method** | Pointer to **string** |  | [optional] 
 **Organization** | Pointer to **string** | The Organization id used for authentication | [optional] 
 **Provider** | Pointer to **string** | OIDC or SAML provider id used for authentication | [optional] 
@@ -78,6 +79,31 @@ SetCompletedAt sets CompletedAt field to given value.
 `func (o *SessionAuthenticationMethod) HasCompletedAt() bool`
 
 HasCompletedAt returns a boolean if a field has been set.
+
+### GetDeviceTrustBased
+
+`func (o *SessionAuthenticationMethod) GetDeviceTrustBased() bool`
+
+GetDeviceTrustBased returns the DeviceTrustBased field if non-nil, zero value otherwise.
+
+### GetDeviceTrustBasedOk
+
+`func (o *SessionAuthenticationMethod) GetDeviceTrustBasedOk() (*bool, bool)`
+
+GetDeviceTrustBasedOk returns a tuple with the DeviceTrustBased field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceTrustBased
+
+`func (o *SessionAuthenticationMethod) SetDeviceTrustBased(v bool)`
+
+SetDeviceTrustBased sets DeviceTrustBased field to given value.
+
+### HasDeviceTrustBased
+
+`func (o *SessionAuthenticationMethod) HasDeviceTrustBased() bool`
+
+HasDeviceTrustBased returns a boolean if a field has been set.
 
 ### GetMethod
 

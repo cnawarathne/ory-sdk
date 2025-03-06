@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Traits** | Pointer to **map[string]interface{}** | The identity traits. This is a placeholder for the registration flow. | [optional] 
 **UpstreamParameters** | Pointer to **map[string]interface{}** | UpstreamParameters are the parameters that are passed to the upstream identity provider.  These parameters are optional and depend on what the upstream identity provider supports. Supported parameters are: &#x60;login_hint&#x60; (string): The &#x60;login_hint&#x60; parameter suppresses the account chooser and either pre-fills the email box on the sign-in form, or selects the proper session. &#x60;hd&#x60; (string): The &#x60;hd&#x60; parameter limits the login/registration process to a Google Organization, e.g. &#x60;mycollege.edu&#x60;. &#x60;prompt&#x60; (string): The &#x60;prompt&#x60; specifies whether the Authorization Server prompts the End-User for reauthentication and consent, e.g. &#x60;select_account&#x60;. | [optional] 
 **TotpCode** | **string** | The TOTP code. | 
+**TrustDevice** | Pointer to **bool** | Trust this device | [optional] 
 **WebauthnLogin** | Pointer to **string** | Login a WebAuthn Security Key  This must contain the ID of the WebAuthN connection. | [optional] 
 **LookupSecret** | **string** | The lookup secret. | 
 **Address** | Pointer to **string** | Address is the address to send the code to, in case that there are multiple addresses. This field is only used in two-factor flows and is ineffective for passwordless flows. | [optional] 
@@ -311,6 +312,31 @@ and a boolean to check if the value has been set.
 
 SetTotpCode sets TotpCode field to given value.
 
+
+### GetTrustDevice
+
+`func (o *UpdateLoginFlowBody) GetTrustDevice() bool`
+
+GetTrustDevice returns the TrustDevice field if non-nil, zero value otherwise.
+
+### GetTrustDeviceOk
+
+`func (o *UpdateLoginFlowBody) GetTrustDeviceOk() (*bool, bool)`
+
+GetTrustDeviceOk returns a tuple with the TrustDevice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrustDevice
+
+`func (o *UpdateLoginFlowBody) SetTrustDevice(v bool)`
+
+SetTrustDevice sets TrustDevice field to given value.
+
+### HasTrustDevice
+
+`func (o *UpdateLoginFlowBody) HasTrustDevice() bool`
+
+HasTrustDevice returns a boolean if a field has been set.
 
 ### GetWebauthnLogin
 

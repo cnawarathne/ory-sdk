@@ -3,7 +3,7 @@ Ory Identities API
 
 This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
 
-API version: v1.3.8
+API version: v1.4.0-alpha.0
 Contact: office@ory.sh
 */
 
@@ -322,6 +322,40 @@ func (obj *UpdateSettingsFlowBody) GetActualInstance() (interface{}) {
 
 	if obj.UpdateSettingsFlowWithWebAuthnMethod != nil {
 		return obj.UpdateSettingsFlowWithWebAuthnMethod
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj UpdateSettingsFlowBody) GetActualInstanceValue() (interface{}) {
+	if obj.UpdateSettingsFlowWithLookupMethod != nil {
+		return *obj.UpdateSettingsFlowWithLookupMethod
+	}
+
+	if obj.UpdateSettingsFlowWithOidcMethod != nil {
+		return *obj.UpdateSettingsFlowWithOidcMethod
+	}
+
+	if obj.UpdateSettingsFlowWithPasskeyMethod != nil {
+		return *obj.UpdateSettingsFlowWithPasskeyMethod
+	}
+
+	if obj.UpdateSettingsFlowWithPasswordMethod != nil {
+		return *obj.UpdateSettingsFlowWithPasswordMethod
+	}
+
+	if obj.UpdateSettingsFlowWithProfileMethod != nil {
+		return *obj.UpdateSettingsFlowWithProfileMethod
+	}
+
+	if obj.UpdateSettingsFlowWithTotpMethod != nil {
+		return *obj.UpdateSettingsFlowWithTotpMethod
+	}
+
+	if obj.UpdateSettingsFlowWithWebAuthnMethod != nil {
+		return *obj.UpdateSettingsFlowWithWebAuthnMethod
 	}
 
 	// all schemas are nil

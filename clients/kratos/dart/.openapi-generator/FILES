@@ -87,6 +87,7 @@ doc/UiContainer.md
 doc/UiNode.md
 doc/UiNodeAnchorAttributes.md
 doc/UiNodeAttributes.md
+doc/UiNodeDivisionAttributes.md
 doc/UiNodeImageAttributes.md
 doc/UiNodeInputAttributes.md
 doc/UiNodeMeta.md
@@ -224,6 +225,7 @@ lib/src/model/ui_container.dart
 lib/src/model/ui_node.dart
 lib/src/model/ui_node_anchor_attributes.dart
 lib/src/model/ui_node_attributes.dart
+lib/src/model/ui_node_division_attributes.dart
 lib/src/model/ui_node_image_attributes.dart
 lib/src/model/ui_node_input_attributes.dart
 lib/src/model/ui_node_meta.dart
@@ -352,6 +354,7 @@ test/token_pagination_test.dart
 test/ui_container_test.dart
 test/ui_node_anchor_attributes_test.dart
 test/ui_node_attributes_test.dart
+test/ui_node_division_attributes_test.dart
 test/ui_node_image_attributes_test.dart
 test/ui_node_input_attributes_test.dart
 test/ui_node_meta_test.dart

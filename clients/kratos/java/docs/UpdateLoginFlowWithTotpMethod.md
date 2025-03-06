@@ -12,6 +12,7 @@ Update Login Flow with TOTP Method
 |**method** | **String** | Method should be set to \&quot;totp\&quot; when logging in using the TOTP strategy. |  |
 |**totpCode** | **String** | The TOTP code. |  |
 |**transientPayload** | **Object** | Transient data to pass along to any webhooks |  [optional] |
+|**trustDevice** | **Boolean** | Trust this device |  [optional] |
 
 
 

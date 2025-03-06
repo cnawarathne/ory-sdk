@@ -21,6 +21,8 @@ class _$UpdateLoginFlowWithCodeMethod extends UpdateLoginFlowWithCodeMethod {
   final String? resend;
   @override
   final JsonObject? transientPayload;
+  @override
+  final bool? trustDevice;
 
   factory _$UpdateLoginFlowWithCodeMethod(
           [void Function(UpdateLoginFlowWithCodeMethodBuilder)? updates]) =>
@@ -33,7 +35,8 @@ class _$UpdateLoginFlowWithCodeMethod extends UpdateLoginFlowWithCodeMethod {
       this.identifier,
       required this.method,
       this.resend,
-      this.transientPayload})
+      this.transientPayload,
+      this.trustDevice})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         csrfToken, r'UpdateLoginFlowWithCodeMethod', 'csrfToken');
@@ -60,7 +63,8 @@ class _$UpdateLoginFlowWithCodeMethod extends UpdateLoginFlowWithCodeMethod {
         identifier == other.identifier &&
         method == other.method &&
         resend == other.resend &&
-        transientPayload == other.transientPayload;
+        transientPayload == other.transientPayload &&
+        trustDevice == other.trustDevice;
   }
 
   @override
@@ -73,6 +77,7 @@ class _$UpdateLoginFlowWithCodeMethod extends UpdateLoginFlowWithCodeMethod {
     _$hash = $jc(_$hash, method.hashCode);
     _$hash = $jc(_$hash, resend.hashCode);
     _$hash = $jc(_$hash, transientPayload.hashCode);
+    _$hash = $jc(_$hash, trustDevice.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -86,7 +91,8 @@ class _$UpdateLoginFlowWithCodeMethod extends UpdateLoginFlowWithCodeMethod {
           ..add('identifier', identifier)
           ..add('method', method)
           ..add('resend', resend)
-          ..add('transientPayload', transientPayload))
+          ..add('transientPayload', transientPayload)
+          ..add('trustDevice', trustDevice))
         .toString();
   }
 }
@@ -126,6 +132,10 @@ class UpdateLoginFlowWithCodeMethodBuilder
   set transientPayload(JsonObject? transientPayload) =>
       _$this._transientPayload = transientPayload;
 
+  bool? _trustDevice;
+  bool? get trustDevice => _$this._trustDevice;
+  set trustDevice(bool? trustDevice) => _$this._trustDevice = trustDevice;
+
   UpdateLoginFlowWithCodeMethodBuilder() {
     UpdateLoginFlowWithCodeMethod._defaults(this);
   }
@@ -140,6 +150,7 @@ class UpdateLoginFlowWithCodeMethodBuilder
       _method = $v.method;
       _resend = $v.resend;
       _transientPayload = $v.transientPayload;
+      _trustDevice = $v.trustDevice;
       _$v = null;
     }
     return this;
@@ -170,7 +181,8 @@ class UpdateLoginFlowWithCodeMethodBuilder
             method: BuiltValueNullFieldError.checkNotNull(
                 method, r'UpdateLoginFlowWithCodeMethod', 'method'),
             resend: resend,
-            transientPayload: transientPayload);
+            transientPayload: transientPayload,
+            trustDevice: trustDevice);
     replace(_$result);
     return _$result;
   }

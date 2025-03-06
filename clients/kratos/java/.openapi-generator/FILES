@@ -91,6 +91,7 @@ docs/UiContainer.md
 docs/UiNode.md
 docs/UiNodeAnchorAttributes.md
 docs/UiNodeAttributes.md
+docs/UiNodeDivisionAttributes.md
 docs/UiNodeImageAttributes.md
 docs/UiNodeInputAttributes.md
 docs/UiNodeMeta.md
@@ -245,6 +246,7 @@ src/main/java/sh/ory/kratos/model/UiContainer.java
 src/main/java/sh/ory/kratos/model/UiNode.java
 src/main/java/sh/ory/kratos/model/UiNodeAnchorAttributes.java
 src/main/java/sh/ory/kratos/model/UiNodeAttributes.java
+src/main/java/sh/ory/kratos/model/UiNodeDivisionAttributes.java
 src/main/java/sh/ory/kratos/model/UiNodeImageAttributes.java
 src/main/java/sh/ory/kratos/model/UiNodeInputAttributes.java
 src/main/java/sh/ory/kratos/model/UiNodeMeta.java
@@ -371,6 +373,7 @@ src/test/java/sh/ory/kratos/model/TokenPaginationTest.java
 src/test/java/sh/ory/kratos/model/UiContainerTest.java
 src/test/java/sh/ory/kratos/model/UiNodeAnchorAttributesTest.java
 src/test/java/sh/ory/kratos/model/UiNodeAttributesTest.java
+src/test/java/sh/ory/kratos/model/UiNodeDivisionAttributesTest.java
 src/test/java/sh/ory/kratos/model/UiNodeImageAttributesTest.java
 src/test/java/sh/ory/kratos/model/UiNodeInputAttributesTest.java
 src/test/java/sh/ory/kratos/model/UiNodeMetaTest.java
